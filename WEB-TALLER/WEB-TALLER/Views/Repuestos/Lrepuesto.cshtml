@@ -1,0 +1,91 @@
+﻿@model List<Repuesto>
+@{
+    ViewData["Title"] = "Lrepuesto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+       Repuestos
+    </div>
+    <div class="card-body">
+       
+        <a id="insertarR" asp-action="Lrepuesto" asp-controller="Repuestos" class="btn btn-success">Agregar</a>
+        
+
+        <hr />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th>Repuesto</th>
+                <th>Precio</th>
+                <th>Seleccionar</th>
+                <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.NOMBRE</td>
+                        <td>@item.PRECIO</td>
+                        <td>
+                            <input id="idRpuesto" type="checkbox" name="seleccionar" value="@item.ID_REPUESTO" onclick="guardarIdRepuesto(@item.ID_REPUESTO)" />
+                        </td>
+                        <td>
+                            <div class="mb-3">
+                                <label for="txtcantidad" class="form-label"></label>
+                                <input id="txtcantidad_@item.NOMBRE" name="txtcantidad" onchange="guardarcantidad('@item.NOMBRE')" type="text" class="form-control">
+                            </div>
+                        </td>
+                    </tr>
+                
+                }
+            </tbody>
+        </table>
+       
+        <a id="insertarR" asp-controller="Desperfcto" asp-action="Cargar_desperfecto" class="btn btn-success">Agregar mas Desperfectos</a>
+        <a type="submit" asp-controller="Total" asp-action="TotalL" class="btn btn-primary">Siguiente</a>
+    </div>
+</div>
+@section scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        var ID_REPUESTO;
+        var cantidad;
+
+        function guardarIdRepuesto(id) {
+            ID_REPUESTO = id;
+        }
+
+        function guardarcantidad(nombre) {
+            cantidad = $("#txtcantidad_" + nombre).val();
+            console.log($("#txtcantidad_" + nombre))
+            console.log(ID_REPUESTO, cantidad);
+        }
+
+        $(document).ready(function () {
+            $('#insertarR').click(function () {
+                cargarrepuesto();
+            });
+
+            function cargarrepuesto() {
+                var data = {
+                    ID_REPUESTO: ID_REPUESTO,
+                    CANTIDAD: cantidad
+                };
+
+                $.ajax({
+                    url: '/Repuestos/Grepuesto',
+                    type: 'POST',
+                    data: data,
+                    success: function (result) {
+                        
+                    },
+                    error: function (xhr, status, error) {
+                        
+                    }
+                });
+            }
+        });
+    </script>
+}

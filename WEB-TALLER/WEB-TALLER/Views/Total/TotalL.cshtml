@@ -1,0 +1,25 @@
+﻿@model Total
+@{
+    ViewData["Title"] = "TotalL";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Agregar Un Auto
+    </div>
+    <div class="card-body">
+        <form asp-action="TotalL" asp-controller="Total" method="post">
+            <div class="mb-3">
+                <label class="form-label">PRESUPUESTO TOTAL </label>
+                <input asp-for="TOTAL" type="text" class="form-control">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Calcular</button>
+            
+
+        </form>
+    </div>
+</div>
+
+

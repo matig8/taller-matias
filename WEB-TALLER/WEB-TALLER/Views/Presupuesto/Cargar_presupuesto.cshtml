@@ -1,0 +1,29 @@
+﻿@model Presupuesto
+@{
+    ViewData["Title"] = "Cargar_presupuesto1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Agregar Una Presupuesto
+    </div>
+    <div class="card-body">
+        <form asp-action="Cargar_presupuesto" asp-controller="presupuesto" method="post">
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input asp-for="NOMBRE" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Apellido</label>
+                <input asp-for="APELLIDO" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">E_Mail</label>
+                <input asp-for="E_MAIL" maxlength="10" type="text" class="form-control">
+            </div>
+            <button type="submit"  class="btn btn-primary">Agregar</button>
+            <button type="submit" asp-controller="Desperfcto" asp-action="Cargar_desperfecto" class="btn btn-primary">Siguiente</button>
+        </form>
+    </div>
+</div>

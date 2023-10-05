@@ -1,0 +1,28 @@
+﻿@model Desperfecto
+@{
+    ViewData["Title"] = "Cargar_desperfecto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        Agregar Una Desperfecto
+    </div>
+    <div class="card-body">
+        <form asp-action="Cargar_desperfecto" asp-controller="Desperfcto" method="post">
+            <div class="mb-3">
+                <label class="form-label">Descripcion</label>
+                <input asp-for="DESCRIPCION" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Precio De Mano De Obra</label>
+                <input asp-for="MANO_OBRA" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Dias De Trabajo</label>
+                <input asp-for="TIEMPO" maxlength="10" type="text" class="form-control">
+            </div>
+            <button type="submit"  class="btn btn-primary">Agregar</button>
+            <button type="submit" asp-controller="Repuestos" asp-action="Lrepuesto" class="btn btn-primary">siguiernte</button>
+        </form>
+    </div>
+</div>

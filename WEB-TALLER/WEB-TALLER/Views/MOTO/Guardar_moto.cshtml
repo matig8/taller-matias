@@ -1,0 +1,33 @@
+﻿@model Moto
+@{
+    ViewData["Title"] = "Guardar_moto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        Agregar Una Moto
+    </div>
+    <div class="card-body">
+        <form asp-action="Guardar_moto" asp-controller="Moto" method="post">
+            <div class="mb-3">
+                <label class="form-label">Marca</label>
+                <input asp-for="MARCA" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Modelo</label>
+                <input asp-for="MODELO" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Patente</label>
+                <input asp-for="PATENTE" maxlength="10" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Cilindradas</label>
+                <input asp-for="CILINDRADAS" type="text" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Agregar</button>
+            <button type="submit" asp-controller="Presupuesto" asp-action="Cargar_presupuesto" class="btn btn-primary">Siguiente</button>
+        </form>
+    </div>
+</div>
